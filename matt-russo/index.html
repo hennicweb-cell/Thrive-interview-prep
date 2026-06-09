@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Preparation — Matteo (Matt) Russo</title>
+<style>
+  :root {
+    --navy: #0f2d35;
+    --teal: #1aacb0;
+    --offwhite: #e8eeee;
+    --light: #f5f9f9;
+    --green-bg: #eafaf1;
+    --green-fg: #1e8449;
+    --amber-bg: #fef9e7;
+    --amber-fg: #b7770d;
+    --red-bg: #fde8e8;
+    --red-fg: #c0392b;
+    --text: #1a1a1a;
+    --muted: #5a6a6e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Arial', sans-serif; background: var(--offwhite); color: var(--text); font-size: 15px; line-height: 1.65; }
+  nav { background: var(--navy); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+  nav .brand { color: var(--teal); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  nav .nav-links { display: flex; gap: 24px; }
+  nav .nav-links a { color: var(--offwhite); font-size: 13px; text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  nav .nav-links a:hover { opacity: 1; }
+  .hero { background: var(--navy); padding: 56px 32px 48px; }
+  .hero-inner { max-width: 860px; margin: 0 auto; }
+  .hero-label { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { color: #fff; font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .hero .role { color: var(--offwhite); font-size: 16px; opacity: 0.75; margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-meta .tag { background: rgba(26,172,176,0.18); color: var(--teal); font-size: 13px; padding: 6px 14px; border-radius: 4px; font-weight: 600; }
+  .links-bar { background: #fff; border-bottom: 1px solid #dde6e8; padding: 14px 32px; }
+  .links-bar-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .links-bar span { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .links-bar a { color: var(--teal); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .links-bar a:hover { border-color: var(--teal); }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 32px 80px; }
+  section { margin-bottom: 48px; }
+  .section-title { color: var(--teal); font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding-bottom: 10px; border-bottom: 2px solid var(--teal); margin-bottom: 24px; }
+  .block { border-radius: 6px; padding: 20px 24px; margin-bottom: 16px; }
+  .block.neutral { background: var(--light); border-left: 3px solid var(--teal); }
+  .block.green { background: var(--green-bg); border-left: 3px solid var(--green-fg); }
+  .block.amber { background: var(--amber-bg); border-left: 3px solid var(--amber-fg); }
+  .block.red { background: var(--red-bg); border-left: 3px solid var(--red-fg); }
+  .block h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .block p { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .block p:last-child { margin-bottom: 0; }
+  .block a { color: var(--teal); }
+  .person-card { background: var(--navy); border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+  .person-card .person-name { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+  .person-card .person-title { color: var(--teal); font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .person-card p { color: var(--offwhite); font-size: 14px; opacity: 0.85; margin-bottom: 8px; }
+  .person-card p:last-child { margin-bottom: 0; }
+  .person-card a { color: var(--teal); font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 10px; }
+  .person-card a:hover { text-decoration: underline; }
+  .qa-block { background: #fff; border: 1px solid #dde6e8; border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+  .qa-block .q { color: var(--navy); font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .qa-block p { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .qa-block p:last-child { margin-bottom: 0; }
+  .qa-block a { color: var(--teal); }
+  .key-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .key-col { border-radius: 6px; padding: 20px 22px; }
+  .key-col.lead { background: var(--green-bg); }
+  .key-col.avoid { background: var(--red-bg); }
+  .key-col h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .key-col.lead h3 { color: var(--green-fg); }
+  .key-col.avoid h3 { color: var(--red-fg); }
+  .key-col ul { list-style: none; padding: 0; }
+  .key-col ul li { font-size: 14px; color: var(--text); padding: 6px 0 6px 22px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .key-col ul li:last-child { border-bottom: none; }
+  .key-col.lead ul li::before { content: "▶"; color: var(--green-fg); position: absolute; left: 0; font-size: 10px; top: 8px; }
+  .key-col.avoid ul li::before { content: "✕"; color: var(--red-fg); position: absolute; left: 0; font-size: 11px; top: 7px; }
+  @media (max-width: 640px) {
+    nav .nav-links { display: none; }
+    .hero h1 { font-size: 26px; }
+    .key-grid { grid-template-columns: 1fr; }
+    main { padding: 24px 16px 60px; }
+    .hero, .links-bar { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">Interview Prep</span>
+  <div class="nav-links">
+    <a href="#thrive">About Thrive</a>
+    <a href="#people">The People</a>
+    <a href="#why">Why This Role</a>
+    <a href="#strengths">Your Strengths</a>
+    <a href="#prepare">Areas to Prepare</a>
+    <a href="#key">Key Reminders</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Interview Preparation</div>
+    <h1>Matteo (Matt) Russo</h1>
+    <div class="role">Individual Giving Officer, RUHX (Royal United Hospitals Bath Charity)</div>
+    <div class="hero-meta">
+      <span class="tag">Fundraising Manager · Thrive</span>
+      <span class="tag">18 June 2026</span>
+    </div>
+  </div>
+</div>
+<div class="links-bar">
+  <div class="links-bar-inner">
+    <span>Useful links</span>
+    <a href="https://thrivesomerset.org.uk" target="_blank">Thrive website</a>
+    <a href="https://thrive-candidate-brief.vercel.app" target="_blank">Candidate brief</a>
+    <a href="https://www.linkedin.com/in/matthewdbyrne/" target="_blank">Matthew on LinkedIn</a>
+    <a href="https://www.linkedin.com/in/val-bishop-ab91069/" target="_blank">Val on LinkedIn</a>
+  </div>
+</div>
+<main>
+  <section id="thrive">
+    <div class="section-title">About Thrive</div>
+    
+    <div class="block neutral"><h3>Who they are</h3><p>Thrive is the operating name of the Community Council for Somerset — a charity with over 100 years of history (2026 is their centenary year). Registered at Fitzwarren House, Queen Street, Taunton. Charity number 1069260.</p><p>They have historically operated through contracts with Somerset County Council and are now actively repositioning — moving from contract delivery toward a more mission-focused model with growing unrestricted fundraising income. This is a genuine and significant pivot.</p><p>Their belief: everyone in Somerset should be able to live a healthy, independent and safe life and be part of a thriving community.</p></div>
+    <div class="block neutral"><h3>What they do — services and the village agent model</h3><p>Thrive's work covers three areas: individuals and families (debt advice, fuel poverty support, mental health signposting); community buildings and places (training for people running local community spaces); and diverse and displaced communities (support for minority ethnic communities and refugees).</p><p>Their 70 village agents are paid staff — not volunteers — embedded across Somerset. They visit people at home, run talking cafes, provide advice and crisis support, and connect people to services. The FM's job is strategic enablement — building fundraising culture with the agents, designing toolkits, creating data capture systems — not operational delivery at events.</p></div>
+    <div class="block amber"><h3>The fundraising picture</h3><p>Thrive's income is almost entirely statutory contracts and grants. A very small number of existing regular givers. The real gap is donor acquisition. The centenary goal is 2,000 actively interested supporters by year end — not donors yet. 100 regular givers by year end would be welcome but is not a hard target.</p><p>There is no fixed acquisition budget. Every spend must be proposed with a clear rationale: channel, likely response, cost per supporter, break-even at regular giving level. Email lists exist (a few thousand contacts) but are not consented for fundraising — Thrive must not fundraise from current clients. Beacon CRM is in place.</p></div>
+    <div class="block green"><h3>Culture, values and the growth trajectory</h3><p>Thrive genuinely lives its values: kindness and compassion, honesty and transparency, quality and diversity. Family-friendly, flexible, and an environment where it is okay to take risks and fail. Increasingly mission-focused — frontline staff will notice immediately whether a fundraiser genuinely cares.</p><p>If the FM performs well in year one, a digital fundraising officer follows in year two and the FM grows into head of fundraising. This is a builder role with a genuine career trajectory.</p></div>
+
+  </section>
+  <section id="people">
+    <div class="section-title">The People You Will Meet</div>
+    
+    <div class="person-card"><div class="person-name">Matthew Byrne</div><div class="person-title">Head of Development &amp; Communications — your line manager</div><p>Head of Development and Communications at Thrive since July 2021. Previously CEO of Westbank Community Health and Care (250 staff) and Service Manager at Devon Carers for over eleven years. Currently completing an MBA at Plymouth University. MCIOF, Fellow of the RSA.</p><p>Describes himself as 'sometimes disruptive, sometimes a heretic.' Intellectually curious, warm, and direct. His central test is authenticity — does this person actually care about what Thrive does? He values commercial thinking and has been making the case to a sceptical board minority that Thrive can build a sustainable fundraising programme from the public.</p><a href="https://www.linkedin.com/in/matthewdbyrne/" target="_blank">View Matthew's LinkedIn profile →</a></div>
+    <div class="person-card"><div class="person-name">Val Bishop</div><div class="person-title">Chief Executive</div><p>CEO at Thrive since December 2022. Previously Programmes Director at Somerset Community Foundation (5.5 years), Manager of West Buckland School Foundation (all fundraising streams), and Head of Communications at African Initiatives. University of St Andrews (English and Modern History, 2:1).</p><p>'I am a values-driven leader guided by compassion, authenticity, and a steadfast commitment to changing people's lives.' She is fully behind this hire. She has a strong fundraising background herself and will not be easily impressed by generalities. Read her recent LinkedIn posts before the interview.</p><a href="https://www.linkedin.com/in/val-bishop-ab91069/" target="_blank">View Val's LinkedIn profile →</a></div>
+
+  </section>
+  <section id="why">
+    <div class="section-title">Why This Role — Preparing Your Answers</div>
+    <div class="qa-block"><div class="q">Why do you want this job?</div>
+<p>Lead with what you built at RUHX — and why you have hit the ceiling. You arrived at a declining programme, built it from scratch to over £500k, and the organisation's structure does not give you the scope to go further. You have the skills. You need a bigger canvas.</p>
+<p>Thrive gives you that canvas. A community-facing charity in Somerset, starting from near-zero on individual giving, in its centenary year, with 70 village agents as the infrastructure for community fundraising. You have done the RUHX build. You know what the first year looks like. This is the next version of that challenge, in a place and for a cause that matters personally to you.</p>
+<p>The career trajectory is also right. Head of fundraising, building a team around you — that is where you want to go. Thrive is how you get there.</p></div>
+    <div class="qa-block"><div class="q">Why Thrive specifically?</div>
+<p>This one needs to come from somewhere personal. Your cover letter has the most directly relevant personal disclosure: you have personally relied on local council services during a difficult time. You live in Somerset with your family. You have seen in a hospital environment what timely, accessible community support means to people who are struggling.</p>
+<p>Do not save this for the end or bury it in the answer. Lead with it: 'The reason this opportunity means something to me is both professional and personal. I have relied on services like Thrive's during a difficult period. I live in Somerset. I understand why these services matter and why it matters that people know they exist.' Then move to the professional case.</p>
+<p>You also observed something specific: Thrive's core fundraising challenge is awareness — people just do not know the service exists. That insight, and your plan for addressing it through donor acquisition, is directly what Matthew is looking for.</p></div>
+    <div class="qa-block"><div class="q">What do you know about Thrive?</div>
+<p>You know they are in their centenary year — 100 years of operating in Somerset. You know the village agent model: 70 paid staff embedded across the county, running talking cafes, providing debt and fuel poverty advice, supporting people in crisis. You know the FM role is about building fundraising culture with the agents, not attending every event.</p>
+<p>You know their centenary goal is 2,000 supporters, not income. You know approximately 100 community events are running this year. You know the email lists are not consented for fundraising. You know Beacon CRM is in place. You know Matthew manages trusts and foundations himself. You know the fundraising administrator has embraced community fundraising and will be your direct report.</p>
+<p>Go to <a href="https://thrivesomerset.org.uk" target="_blank">thrivesomerset.org.uk</a> and <a href="https://thrive-candidate-brief.vercel.app" target="_blank">thrive-candidate-brief.vercel.app</a> before the interview. Read their fuel poverty report ('Cold Homes, Tough Choices') — it illustrates exactly what Thrive is doing and why it matters. Look at what Matthew and Val have posted on LinkedIn recently.</p></div>
+  </section>
+  <section id="strengths">
+    <div class="section-title">Your Strengths — Lead With These</div>
+    
+<div class="block green"><h3>The RUHX story is your most important asset — tell it fully and early</h3>
+<p>You arrived at RUHX with a declining organic income stream and no individual giving infrastructure. You created a folder called 'individual giving.' And you built it to over £500k annually.</p>
+<p>Tell it with specific numbers: door drops from £20k to £80k. In-memory giving from £50-60k to £150-200k. Staff lottery doubled from near-zero to £30k using the office printer and your own design skills. Facebook and Google ads layered onto offline activity. Thirty-plus funeral director relationships built personally. Did it largely alone. This is almost exactly what Thrive needs. Do not wait for a question that fits — find a way to put this story on the table early.</p></div>
+<div class="block red"><h3>Lead with the personal mission connection — it is your strongest differentiator</h3>
+<p>Your personal connection to Thrive's cause — having relied on local council services, living in Somerset with your family — is the most directly relevant cause connection of any candidate. But it has not surfaced clearly in either conversation. When they ask why Thrive, lead with the personal disclosure before the professional case. Do not save it for the end.</p></div>
+<div class="block green"><h3>Your learning instinct — the urodynamics story</h3>
+<p>When asked about getting competent in an unfamiliar area, you described fundraising for a urodynamics machine — you booked time with a patient, spoke to the clinicians, went in person. The copy you wrote raised the full fundraising target. That instinct — go to human sources before designing anything — is exactly right for the village agent relationship. Tell this story and then connect it directly: 'That is the instinct I would bring to the village agents. Before I design anything, I spend three months getting to know them, what they deliver, what the people they support experience. Then I design from that.'</p></div>
+<div class="block green"><h3>Your design capability is a practical advantage for a small team</h3>
+<p>You produce your own materials — design, photography, digital ads. At RUHX you built door drops, in-memory campaigns, and digital ads using your own Adobe Creative Cloud skills without agency dependency. For a charity with a small, stretched marketing team, this is a significant day-one practical asset. Mention it when the conversation turns to resourcing.</p></div>
+  </section>
+  <section id="prepare">
+    <div class="section-title">Areas to Prepare</div>
+    
+<div class="block amber"><h3>The village agent question — develop the conversion architecture</h3>
+<p>Your instinct to survey the agents first and be lean is right. Develop it further: 'Three months listening — understand what the agents deliver, what the communities they work in look like, what the blockers to fundraising conversations are. Alongside that I design a data capture mechanism for the centenary events: a QR code linking to a Beacon sign-up form, or a simple paper sign-up with consent language, so every event produces usable contacts. I brief the agents on how to introduce Thrive's work without making a hard ask — warm connection first, supporter relationship second. The system runs without me being present. That is how you convert 100 events into a growing supporter base.'</p></div>
+    <div class="block amber"><h3>Preparing your acquisition business case</h3><p>When asked about your first acquisition spend, draw on your RUHX experience specifically. Something like: 'My first proposal would be a door drop to postcode hotspot areas — areas with high village agent activity and known community need. I would design the drop myself, which keeps the cost down. At RUHX I took door drop income from £20k to £80k by layering Facebook geo-targeting on top — I would propose the same approach here. Test a defined Somerset geography with a £500-800 door drop, measure response, then propose a matched Facebook campaign to the same postcodes. The combined cost is low; the data you generate is high value. At £10/month regular giving, break-even is within the year.'</p>
+<p>The RUHX reference makes it real — not a theoretical proposal. Practice saying it out loud.</p></div>
+  </section>
+  <section id="key">
+    <div class="section-title">Key Things to Remember on 18 June</div>
+    <div class="key-grid">
+      <div class="key-col lead"><h3>Lead with</h3><ul><li>Lead with the personal — having relied on local services, living in Somerset</li>
+<li>The RUHX story — specific numbers, built alone, directly analogous to Thrive</li>
+<li>The urodynamics instinct — go to human sources first, then design</li>
+<li>Design capability — you produce materials yourself, real practical value</li>
+<li>Head of fundraising trajectory — this is how you get there</li>
+<li>The fundraising administrator relationship — show you have thought about managing her</li></ul></div>
+      <div class="key-col avoid"><h3>Avoid</h3><ul><li>Starting with the career opportunity rather than the personal connection</li>
+<li>Leaving the RUHX story to emerge through questions — put it on the table early</li>
+<li>Presenting acquisition as instinct without the business case structure</li>
+<li>Forgetting to ask about the fundraising administrator and how the relationship works</li>
+<li>Overclaiming Somerset roots — your connection is real, but be specific about it</li></ul></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

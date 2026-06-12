@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Preparation — Holly Reid</title>
+<style>
+  :root {
+    --navy: #0f2d35;
+    --teal: #1aacb0;
+    --offwhite: #e8eeee;
+    --light: #f5f9f9;
+    --green-bg: #eafaf1;
+    --green-fg: #1e8449;
+    --amber-bg: #fef9e7;
+    --amber-fg: #b7770d;
+    --red-bg: #fde8e8;
+    --red-fg: #c0392b;
+    --text: #1a1a1a;
+    --muted: #5a6a6e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Arial', sans-serif; background: var(--offwhite); color: var(--text); font-size: 15px; line-height: 1.65; }
+  nav { background: var(--navy); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+  nav .brand { color: var(--teal); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+  nav .nav-links { display: flex; gap: 24px; }
+  nav .nav-links a { color: var(--offwhite); font-size: 13px; text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+  nav .nav-links a:hover { opacity: 1; }
+  .hero { background: var(--navy); padding: 56px 32px 48px; }
+  .hero-inner { max-width: 860px; margin: 0 auto; }
+  .hero-label { color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { color: #fff; font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .hero .role { color: var(--offwhite); font-size: 16px; opacity: 0.75; margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-meta .tag { background: rgba(26,172,176,0.18); color: var(--teal); font-size: 13px; padding: 6px 14px; border-radius: 4px; font-weight: 600; }
+  .links-bar { background: #fff; border-bottom: 1px solid #dde6e8; padding: 14px 32px; }
+  .links-bar-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .links-bar span { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .links-bar a { color: var(--teal); font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .links-bar a:hover { border-color: var(--teal); }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 32px 80px; }
+  section { margin-bottom: 48px; }
+  .section-title { color: var(--teal); font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; padding-bottom: 10px; border-bottom: 2px solid var(--teal); margin-bottom: 24px; }
+  .block { border-radius: 6px; padding: 20px 24px; margin-bottom: 16px; }
+  .block.neutral { background: var(--light); border-left: 3px solid var(--teal); }
+  .block.green { background: var(--green-bg); border-left: 3px solid var(--green-fg); }
+  .block.amber { background: var(--amber-bg); border-left: 3px solid var(--amber-fg); }
+  .block.red { background: var(--red-bg); border-left: 3px solid var(--red-fg); }
+  .block h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .block p { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .block p:last-child { margin-bottom: 0; }
+  .block a { color: var(--teal); }
+  .person-card { background: var(--navy); border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+  .person-card .person-name { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+  .person-card .person-title { color: var(--teal); font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .person-card p { color: var(--offwhite); font-size: 14px; opacity: 0.85; margin-bottom: 8px; }
+  .person-card p:last-child { margin-bottom: 0; }
+  .person-card a { color: var(--teal); font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 10px; }
+  .person-card a:hover { text-decoration: underline; }
+  .qa-block { background: #fff; border: 1px solid #dde6e8; border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+  .qa-block .q { color: var(--navy); font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .qa-block p { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+  .qa-block p:last-child { margin-bottom: 0; }
+  .qa-block a { color: var(--teal); }
+  .key-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .key-col { border-radius: 6px; padding: 20px 22px; }
+  .key-col.lead { background: var(--green-bg); }
+  .key-col.avoid { background: var(--red-bg); }
+  .key-col h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+  .key-col.lead h3 { color: var(--green-fg); }
+  .key-col.avoid h3 { color: var(--red-fg); }
+  .key-col ul { list-style: none; padding: 0; }
+  .key-col ul li { font-size: 14px; color: var(--text); padding: 6px 0 6px 22px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .key-col ul li:last-child { border-bottom: none; }
+  .key-col.lead ul li::before { content: "▶"; color: var(--green-fg); position: absolute; left: 0; font-size: 10px; top: 8px; }
+  .key-col.avoid ul li::before { content: "✕"; color: var(--red-fg); position: absolute; left: 0; font-size: 11px; top: 7px; }
+  @media (max-width: 640px) {
+    nav .nav-links { display: none; }
+    .hero h1 { font-size: 26px; }
+    .key-grid { grid-template-columns: 1fr; }
+    main { padding: 24px 16px 60px; }
+    .hero, .links-bar { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">Interview Prep</span>
+  <div class="nav-links">
+    <a href="#thrive">About Thrive</a>
+    <a href="#people">The People</a>
+    <a href="#why">Why This Role</a>
+    <a href="#strengths">Your Strengths</a>
+    <a href="#prepare">Areas to Prepare</a>
+    <a href="#key">Key Reminders</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Interview Preparation</div>
+    <h1>Holly Reid</h1>
+    <div class="role">Fundraising Manager, Churches Housing Action Team (CHAT) · Wiveliscombe, Somerset</div>
+    <div class="hero-meta">
+      <span class="tag">Fundraising Manager · Thrive</span>
+      <span class="tag">18 June 2026 · 3.15pm</span>
+      <span class="tag">Fitzwarren House, Queen Street, Taunton TA1 3UG</span>
+    </div>
+  </div>
+</div>
+<div class="links-bar">
+  <div class="links-bar-inner">
+    <span>Useful links</span>
+    <a href="https://thrivesomerset.org.uk" target="_blank">Thrive website</a>
+    <a href="https://thrive-candidate-brief.vercel.app" target="_blank">Candidate brief</a>
+    <a href="https://www.linkedin.com/in/matthewdbyrne/" target="_blank">Matthew on LinkedIn</a>
+    <a href="https://www.linkedin.com/in/val-bishop-ab91069/" target="_blank">Val on LinkedIn</a>
+  </div>
+</div>
+<main>
+
+  <section id="thrive">
+    <div class="section-title">About Thrive</div>
+    
+    <div class="block neutral"><h3>Who they are</h3><p>Thrive is the operating name of the Community Council for Somerset — a charity with over 100 years of history (2026 is their centenary year). Registered at Fitzwarren House, Queen Street, Taunton. Charity number 1069260.</p><p>They have historically operated through contracts with Somerset County Council and are now actively repositioning — moving from contract delivery toward a more mission-focused model with growing unrestricted fundraising income. This is a genuine and significant pivot.</p><p>Their belief: everyone in Somerset should be able to live a healthy, independent and safe life and be part of a thriving community.</p></div>
+    <div class="block neutral"><h3>What they do — services and the village agent model</h3><p>Thrive's work covers three areas: individuals and families (debt advice, fuel poverty support, mental health signposting); community buildings and places (training for people running local community spaces); and diverse and displaced communities (support for minority ethnic communities and refugees).</p><p>Their 70 village agents are paid staff — not volunteers — embedded across Somerset. They visit people at home, run talking cafes, provide advice and crisis support, and connect people to services. The FM's job is strategic enablement — building fundraising culture with the agents, designing toolkits, creating data capture systems — not operational delivery at every event.</p></div>
+    <div class="block amber"><h3>The fundraising picture</h3><p>Thrive's income is almost entirely statutory contracts and grants. A very small number of existing regular givers. The real gap is donor acquisition. The centenary goal is 2,000 actively interested supporters by year end — not donors yet. 100 regular givers by year end would be welcome but is not a hard target.</p><p>There is no fixed acquisition budget. Every spend must be proposed with a clear rationale: channel, likely response, cost per supporter, break-even at regular giving level. Email lists exist (a few thousand contacts) but are not consented for fundraising — Thrive must not fundraise from current clients. Beacon CRM is in place.</p></div>
+    <div class="block green"><h3>Culture, values and the growth trajectory</h3><p>Thrive genuinely lives its values: kindness and compassion, honesty and transparency, quality and diversity. Family-friendly, flexible, and an environment where it is okay to take risks and fail. Increasingly mission-focused — frontline staff will notice immediately whether a fundraiser genuinely cares.</p><p>If the FM performs well in year one, a digital fundraising officer follows in year two and the FM grows into head of fundraising. This is a builder role with a genuine career trajectory.</p></div>
+  </section>
+
+  <section id="people">
+    <div class="section-title">The People You Will Meet</div>
+    
+    <div class="person-card"><div class="person-name">Matthew Byrne</div><div class="person-title">Head of Development &amp; Communications — your line manager</div><p>Head of Development and Communications at Thrive since July 2021. Previously CEO of Westbank Community Health and Care (250 staff) and Service Manager at Devon Carers for over eleven years. Currently completing an MBA at Plymouth University. MCIOF, Fellow of the RSA.</p><p>Describes himself as 'sometimes disruptive, sometimes a heretic.' Intellectually curious, warm, and direct. His central test is authenticity — does this person actually care about what Thrive does? He values commercial thinking and has been making the case to a sceptical board minority that Thrive can build a sustainable fundraising programme from the public.</p><a href="https://www.linkedin.com/in/matthewdbyrne/" target="_blank">View Matthew's LinkedIn profile →</a></div>
+    <div class="person-card"><div class="person-name">Val Bishop</div><div class="person-title">Chief Executive</div><p>CEO at Thrive since December 2022. Previously Programmes Director at Somerset Community Foundation (5.5 years), Manager of West Buckland School Foundation (all fundraising streams including major gifts, legacies, regular giving, corporates), and Head of Communications at African Initiatives. University of St Andrews (English and Modern History, 2:1).</p><p>'I am a values-driven leader guided by compassion, authenticity, and a steadfast commitment to changing people's lives.' She is fully behind this hire. She has a strong fundraising background herself and will not be easily impressed by generalities. Read her recent LinkedIn posts before the interview.</p><a href="https://www.linkedin.com/in/val-bishop-ab91069/" target="_blank">View Val's LinkedIn profile →</a></div>
+  </section>
+
+  <section id="why">
+    <div class="section-title">Why This Role — Preparing Your Answers</div>
+
+    <div class="qa-block">
+      <div class="q">Why do you want this job?</div>
+      <p>Lead with the combination that is unique to you: you are already embedded in Somerset, you know the voluntary sector landscape here, and you have watched Thrive's work from the inside at Somerset Sight. This is not a role you are discovering — it is one you have been moving toward.</p>
+      <p>The building opportunity matters to you. You have grown CHAT's fundraising significantly and you are ready for the next challenge — more breadth, a bigger canvas, and the chance to build something from a genuinely low base. The centenary year makes this moment particularly significant.</p>
+    </div>
+
+    <div class="qa-block">
+      <div class="q">Why Thrive specifically?</div>
+      <p>You have worked alongside village agents and talking cafes at Somerset Sight. You know what Thrive does in communities at first hand — not from a website. That direct experience is something no other candidate can claim and it is worth leading with.</p>
+      <p>Your mission connection is specific and local. You only work for causes you genuinely believe in. You know your beneficiary statistics for mid Devon because you believe them — child food poverty in an area people perceive as affluent. That is the kind of authentic connection Matthew will notice immediately. Say it in your own words.</p>
+    </div>
+
+    <div class="qa-block">
+      <div class="q">What do you know about Thrive?</div>
+      <p>You know they are in their centenary year. You know the village agent model: 70 paid staff embedded across Somerset, running talking cafes, providing advice and crisis support. You know the FM role is about building fundraising culture with the agents — strategic enablement, not attending every event.</p>
+      <p>You know their goal is 2,000 supporters by year end, not immediate income. You know the email lists are not consented for fundraising. You know Beacon CRM is in place — and you have implemented it yourself at CHAT. You know Matthew manages trusts and foundations himself.</p>
+      <p>Go to <a href="https://thrivesomerset.org.uk" target="_blank">thrivesomerset.org.uk</a> and <a href="https://thrive-candidate-brief.vercel.app" target="_blank">thrive-candidate-brief.vercel.app</a> before the interview. Look at what Matthew and Val have been posting on LinkedIn recently.</p>
+    </div>
+  </section>
+
+  <section id="strengths">
+    <div class="section-title">Your Strengths — Lead With These</div>
+
+    <div class="block green">
+      <h3>You are the only candidate who is already here</h3>
+      <p>Wiveliscombe. Fifteen minutes from Taunton. A decade in Somerset's voluntary sector. You have worked directly alongside village agents and talking cafes at Somerset Sight. You know the communities Thrive serves from the inside. No other candidate in this process comes close on this dimension and it matters — Thrive's frontline staff will notice whether a fundraiser genuinely understands their world.</p>
+    </div>
+
+    <div class="block green">
+      <h3>Your T&amp;F track record is the strongest in the field</h3>
+      <p>National Lottery Community Fund, Garfield Weston Foundation, Global's Make Some Noise. Multi-year grants. Full cycle independently — research, writing, reporting, stewardship. You doubled grant income at CHAT. You arrived without being trusted with large grants at Somerset Sight and then discovered you were genuinely good at it. That arc — excluded, then given responsibility, then delivering — is a strong story. Tell it.</p>
+    </div>
+
+    <div class="block green">
+      <h3>You implemented Beacon CRM yourself</h3>
+      <p>You selected it, configured it, migrated the data, built the filters and dashboards. Thrive uses Beacon. Day one, you know the system — not theoretically, but operationally. This is a practical asset that no other candidate in this process can offer.</p>
+    </div>
+
+    <div class="block green">
+      <h3>Your mission connection is genuine and locally specific</h3>
+      <p>You have only ever worked for causes you genuinely believe in — you have said so and your career evidences it. You know your Somerset and Devon communities. Your cause connection is not a general statement about wanting to make a difference. It is specific, local, and rooted. Matthew's central test is whether a fundraiser genuinely means it. You do.</p>
+    </div>
+
+    <div class="block green">
+      <h3>You are building a fundraising culture at CHAT right now</h3>
+      <p>Daily morning meetings with advisors. Making the financial case directly. Filling volunteer slots for the summer fair. Getting case studies from a team that is protective of client confidentiality. This is live, current evidence of exactly what the village agent challenge requires — and you are doing it now. Talk about it specifically.</p>
+    </div>
+  </section>
+
+  <section id="prepare">
+    <div class="section-title">Areas to Prepare</div>
+
+    <div class="block amber">
+      <h3>Donor acquisition — prepare a structured answer</h3>
+      <p>Your instinct is warm-audience and events-first, which is consistent and logical. The gap is commercial framing — cost, projected response rate, break-even at regular giving level. Matthew needs to hear that you can construct a proposal, not just a plan.</p>
+      <p>Before the interview, prepare one clear acquisition answer. Draw on what you know from CHAT and what you understand about Thrive's centenary events: 'My first proposal would be to use the centenary events as paid acquisition opportunities — marketing them to the wider community through print in GP surgeries, community noticeboards and village halls, plus a small targeted social media campaign. Budget of approximately £X for a defined test. At a 2% sign-up rate, with post-event personal conversations and a newsletter journey, I would project Y new consented contacts. At £10/month regular giving, break-even is around Z months. I would report back after the first three events before proposing any wider rollout.' You do not need exact numbers. You need the structure.</p>
+    </div>
+
+    <div class="block amber">
+      <h3>Year one — be specific about what you would do first</h3>
+      <p>Matthew wants someone who can walk in and describe exactly what the first six months looks like. Prepare a clear answer: what you would do in month one, what the first three months look like, and what you would want to have achieved by month six. Lead with the practical — Beacon audit, village agent meetings, grant pipeline review, centenary events data capture — before moving to strategy.</p>
+    </div>
+
+    <div class="block amber">
+      <h3>The Creative Planner Co — address it yourself</h3>
+      <p>Your parallel business is something Matthew may ask about. Get ahead of it rather than waiting. Something like: 'I want to be straightforward about my creative business — it runs in evenings and weekends and has done since 2019. It does not compete for my professional headspace and it will not affect my commitment here. If anything, the event management, marketing and audience engagement skills it has given me are directly relevant.' Said confidently and early, it becomes a positive rather than a concern.</p>
+    </div>
+  </section>
+
+  <section id="key">
+    <div class="section-title">Key Things to Remember on 18 June</div>
+    <div class="key-grid">
+      <div class="key-col lead">
+        <h3>Lead with</h3>
+        <ul>
+          <li>Your Somerset roots and direct experience of Thrive's world — village agents, talking cafes, Somerset Sight</li>
+          <li>T&amp;F track record — doubled grant income, major funders, full cycle independently</li>
+          <li>Beacon CRM — you implemented it yourself, you know it operationally</li>
+          <li>Current community culture-building at CHAT — daily briefings, volunteer mobilisation, case studies</li>
+          <li>Cause connection — specific, local, genuine. You know your statistics because you believe them</li>
+          <li>Your email consent and newsletter approach — soft opt-in awareness, quality over quantity</li>
+        </ul>
+      </div>
+      <div class="key-col avoid">
+        <h3>Avoid</h3>
+        <ul>
+          <li>Waiting for the Creative Planner Co question — raise it yourself and own it positively</li>
+          <li>Presenting acquisition as events only — prepare the commercial structure</li>
+          <li>Being vague about year one — have a specific first six months answer ready</li>
+          <li>Underselling your T&amp;F experience — it is the strongest in this field</li>
+          <li>Generalities about mission — be specific about Somerset, its communities, and what you have seen</li>
+          <li>Forgetting to ask about the fundraising administrator — show you have thought about that relationship</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
